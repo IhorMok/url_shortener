@@ -2,8 +2,10 @@ class LinksController < ApplicationController
   before_action :set_link, only: %i[show edit update destroy]
   before_action :check_if_editable, only: %i[edit update destroy]
   def index
-    @links = Link.recent_first
+    @pagy, @links = pagy Link.recent_first
     @link ||= Link.new
+  rescue Pagy::OverflowError
+    redirect_to root_path
   end
 
   def show; end
@@ -21,8 +23,7 @@ class LinksController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @link.update(link_params)
@@ -44,8 +45,8 @@ class LinksController < ApplicationController
   end
 
   def check_if_editable
-    unless @link.editable_by?(current_user)
-      redirect_to @link, alert: "You aren't allowed to do that."
-    end
+    return if @link.editable_by?(current_user)
+
+    redirect_to @link, alert: "You aren't allowed to do that."
   end
 end

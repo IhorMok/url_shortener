@@ -75,3 +75,5 @@ gem "groupdate", "~> 6.4"
 gem "rubocop", "~> 1.62"
 
 gem "devise", "~> 4.9"
+
+gem "pagy", "~> 7.0"
