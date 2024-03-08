@@ -2,7 +2,7 @@ class ViewsController < ApplicationController
   before_action :set_link
 
   rescue_from ActiveRecord::RecordNotFound do
-    redirect_to root_path, alert: "Missing link!"
+    redirect_to root_path, alert: 'Missing link!'
   end
 
   def show
