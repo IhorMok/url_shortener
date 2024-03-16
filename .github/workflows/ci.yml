@@ -1,0 +1,15 @@
+# name: Tests
+
+# on:
+#   pull_request:
+#     branches:
+#       - "*"
+#   push:
+#     branches:
+#       - "main"
+
+# jobs:
+#   test:
+#     run-on: ubuntu-latest
+#     services:
+#       postgres

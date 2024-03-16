@@ -14,3 +14,4 @@ class UsersTest < ActionDispatch::IntegrationTest
     assert_select 'button', 'Logout'
   end
 end
+
